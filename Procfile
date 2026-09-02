@@ -1,1 +1,1 @@
-web: python combined_bot.py
+web: python3 combined_bot.py
