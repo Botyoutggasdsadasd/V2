@@ -5,6 +5,7 @@ Tables:
   messages(id, telegram_id, role, content, created_at)   -- chat history for context + admin review
   ocr_cache(id, telegram_id, extracted_text, created_at) -- last OCR'd content, so buttons can act on it
 """
+import os
 import sqlite3
 import time
 from contextlib import contextmanager
@@ -44,6 +45,7 @@ CREATE TABLE IF NOT EXISTS ocr_cache (
 
 @contextmanager
 def get_conn():
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     try:
