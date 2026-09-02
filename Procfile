@@ -1,1 +1,1 @@
-worker: python3 combined_bot.py
+web: python combined_bot.py
